@@ -6,13 +6,13 @@ import ChoiceAutopilot from "./ChoiceAutopilot/ChoiceAutopilot";
 import ChoicePayment from "./ChoicePayment/ChoicePayment";
 import "./AsideNav.scss";
 
-const asideComponentList = {
-  0: ChoiceCar,
-  1: ChoiceColor,
-  2: ChoiceInterior,
-  3: ChoiceAutopilot,
-  4: ChoicePayment,
-};
+const asideComponentList = [
+  ChoiceCar,
+  ChoiceColor,
+  ChoiceInterior,
+  ChoiceAutopilot,
+  ChoicePayment,
+];
 
 export default class AsideNav extends Component {
   passProp = (Comp) => {

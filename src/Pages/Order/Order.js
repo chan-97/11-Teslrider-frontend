@@ -7,6 +7,7 @@ import Paint from "./Paint/Paint";
 import OrderInterior from "./OrderInterior/OrderInterior";
 import OrderAutopilot from "./OrderAutopilot/OrderAutopilot";
 import Payment from "./Payment/Payment";
+import API from "./config.js";
 import "./Order.scss";
 
 const orderComponentList = [
@@ -42,7 +43,7 @@ class Order extends Component {
 
   runFetchForIcons = () => {
     const { data } = this.state;
-    fetch("http://10.58.0.46:8000/customizing/icons?model=Model_S")
+    fetch(`${API}/customizing/icons?model=Model_S`)
       .then((res) => res.json())
       .then((res) =>
         this.setState({ data: { ...data, icons: res } }, () =>
@@ -80,7 +81,7 @@ class Order extends Component {
       data,
     } = this.state;
 
-    fetch("http://10.58.0.46:8000/customizing/products", {
+    fetch(`${API}/customizing/products`, {
       method: "POST",
       body: JSON.stringify({
         model: modelPushedAt,
@@ -88,7 +89,7 @@ class Order extends Component {
         color_id: isColorBtnPushedAt,
         wheel_id: isWheelBtnPushedAt,
         interior_id: interiorPushedAt,
-        auto_pilot: isAutopilotChecked ? 1 : 0,
+        auto_pilot: isAutopilotChecked,
       }),
     })
       .then((res) => res.json())
@@ -137,20 +138,11 @@ class Order extends Component {
     );
   };
 
-  remakeCompo = (Comp) => {
-    return class extends React.Component {
-      render() {
-        return <Comp {...this.props} />;
-      }
-    };
-  };
-
   render() {
     console.log(this.props.match.params);
     const { activeComponent } = this.state;
-    const ActiveMain = this.remakeCompo(
-      orderComponentList[this.state.activeComponent]
-    );
+    const ActiveMain = orderComponentList[this.state.activeComponent];
+
     return (
       <article className="Order">
         <HeaderNav

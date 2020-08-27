@@ -121,12 +121,8 @@ export default class Payment extends Component {
           </div>
           <div className="agreeBtnContainer">
             <div className="wrapAgreeCheckBox">
-              <label className="wrapAgreeCheckBox" for="finalCheckBox">
-                <input
-                  type="checkbox"
-                  className="agreeCheckBox"
-                  id="finalCheckBox"
-                />
+              <label className="wrapAgreeCheckBox">
+                <input type="checkbox" className="agreeCheckBox" />
                 Tesla가 서비스 지불 조건에 따라 향후 거래를 위해 결제 수단
                 정보를 저장할 수 있도록 허용합니다.
               </label>

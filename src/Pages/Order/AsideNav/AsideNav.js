@@ -15,14 +15,6 @@ const asideComponentList = [
 ];
 
 export default class AsideNav extends Component {
-  passProp = (Comp) => {
-    return class extends React.Component {
-      render() {
-        return <Comp {...this.props} />;
-      }
-    };
-  };
-
   render() {
     const {
       handleClickChangeCarBtn,
@@ -31,11 +23,11 @@ export default class AsideNav extends Component {
       totalData,
       totalData: { activeComponent },
     } = this.props;
-    const NewProp = this.passProp(asideComponentList[activeComponent]);
+    const ActiveAsideNav = asideComponentList[activeComponent];
     return (
       <aside className="AsideNav">
         <div className="wrapDescription">
-          <NewProp
+          <ActiveAsideNav
             handleClickChangeCarBtn={handleClickChangeCarBtn}
             handleClickChangeBtn={handleClickChangeBtn}
             changeAutopilotBtnState={changeAutopilotBtnState}
